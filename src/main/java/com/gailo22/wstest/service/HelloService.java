@@ -5,6 +5,7 @@
 package com.gailo22.wstest.service;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -36,5 +37,11 @@ public class HelloService {
     public String sayHtmlHello() {
         return "<html> " + "<title>" + "Hello Jersey" + "</title>"
                 + "<body><h1>" + "Hello Jersey" + "</body></h1>" + "</html> ";
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String sayJsonHello() {
+        return "Hello from Json";
     }
 }

@@ -12,19 +12,26 @@ import com.sun.jersey.api.client.config.DefaultClientConfig;
 import java.net.URI;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
  *
  * @author User
  */
-public class JerseyIntegrationTest {
-
-    @Test
-    public void shouldConnectToRestService() {
+public class HelloServiceIntegrationTest {
+    
+    private WebResource service;
+    
+    @Before
+    public void setup() {
         ClientConfig config = new DefaultClientConfig();
         Client client = Client.create(config);
-        WebResource service = client.resource(getBaseURI());
+       service = client.resource(getBaseURI()); 
+    }
+
+    @Test
+    public void shouldInvokeGetOnHelloRestService() {
         // Fluent interfaces
         System.out.println(service.path("rest").path("hello").accept(
                 MediaType.TEXT_PLAIN).get(ClientResponse.class).toString());
