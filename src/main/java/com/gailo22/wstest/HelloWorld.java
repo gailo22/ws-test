@@ -23,6 +23,7 @@ public class HelloWorld extends AbstractHandler {
             throws IOException, ServletException {
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
+        
         baseRequest.setHandled(true);
         response.getWriter().println("<h1>Hello World</h1>");
     }

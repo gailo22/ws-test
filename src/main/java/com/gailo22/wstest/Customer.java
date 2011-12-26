@@ -15,6 +15,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Customer {
     
+    private String id;
+    
     private String name;
     
     private List<Address> addresses;
@@ -35,8 +37,13 @@ public class Customer {
     public void setName(String name) {
         this.name = name;
     }
-    
 
-    
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     
 }
