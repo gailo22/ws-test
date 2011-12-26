@@ -14,14 +14,21 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class Customer {
-    
-    private String id;
-    
-    private String name;
-    
-    private List<Address> addresses;
 
-    @XmlElement(name="address")
+    private String id;
+    private String name;
+    private List<Address> addresses;
+    
+    public Customer() {
+        
+    }
+
+    public Customer(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @XmlElement(name = "address")
     public List<Address> getAddresses() {
         return addresses;
     }
@@ -45,5 +52,4 @@ public class Customer {
     public void setId(String id) {
         this.id = id;
     }
-    
 }

@@ -15,7 +15,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.xml.bind.JAXBElement;
 
 /**
  *
@@ -40,14 +39,18 @@ public class CustomerService {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_XML)
-    public JAXBElement<Customer> getCustomer(@PathParam("id") String customerId) {
-        Customer customer = new Customer();
-        customer.setId(customerId);
-        customer.setName("Montree from GET");
-        return new ObjectFactory().createCustomer(customer);
+    public Customer getCustomer(@PathParam("id") String customerId) {
+        for (Customer customer : CustomerRepository.customers()) {
+            if (customer.getId().equals(customerId)) {
+                return customer;
+            }
+        }
+        return null;
     }
 
     private long persist(Customer customer) {
-        return Long.valueOf(customer.getId());
+        CustomerRepository.addCustomer(customer);
+        Customer newCustomer = getCustomer(customer.getId());
+        return Long.valueOf(newCustomer.getId());
     }
 }
