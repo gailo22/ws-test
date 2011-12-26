@@ -15,7 +15,7 @@ import javax.xml.namespace.QName;
 public class ObjectFactory {
 
     public JAXBElement<Customer> createCustomer(Customer customer) {
-        return new JAXBElement(new QName("http://www.gailo22.com","gailo"),
+        return new JAXBElement(new QName("","customer"),
                 Customer.class, customer);
     }
     
